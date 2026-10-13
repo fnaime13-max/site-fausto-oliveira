@@ -234,8 +234,8 @@ main{ position:relative; width:100%; overflow-x:hidden; }
 }
 .hero__portrait{ position:absolute; z-index:20; bottom:0; left:50%; transform:translateX(-50%); height:86vh; width:80vw; }
 .hero__portrait img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center bottom; }
-@media (min-width:640px){ .hero__portrait{ width:48vw; } }
-@media (min-width:1024px){ .hero__portrait{ width:36vw; } }
+@media (min-width:640px){ .hero__portrait{ width:auto; aspect-ratio:1053/1365; max-width:48vw; } }
+@media (min-width:1024px){ .hero__portrait{ height:min(86vh, calc(100svh - 7rem)); max-width:40vw; } }
 
 /* formação acima da cabeça */
 .study{
@@ -829,8 +829,8 @@ function placeStudy(){
   const iw = heroImg.naturalWidth || 1199, ih = heroImg.naturalHeight || 1312;
   const s = Math.max(W / iw, H / ih), rw = iw * s, rh = ih * s;   // object-fit: cover; posição center bottom
   const imgTop = H - rh, imgLeft = (W - rw) / 2;
-  study.style.top = (imgTop + rh * 0.03 - 4) + "px";              // o cabelo começa ~3% abaixo do topo da foto
-  study.style.left = (imgLeft + rw * 0.506) + "px";               // centro da cabeça
+  study.style.top = (imgTop + rh * 0.01 - 4) + "px";              // o cabelo começa ~1% abaixo do topo da foto
+  study.style.left = (imgLeft + rw * 0.54) + "px";               // centro da cabeça
   study.classList.add("placed");
 }
 if (heroImg.complete) placeStudy(); else heroImg.addEventListener("load", placeStudy);
